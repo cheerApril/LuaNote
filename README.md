@@ -36,6 +36,6 @@
 <br> 对于table跟userdata,Lua是作引用比较,只有它们引用同一个对象的时候,它们才会相等. a = {}; b= {}; a.x = 1; b.x = 1; c = a; print(a==b); print(a == c); 第一个输出是false,第二个输出是true
 <br> a = 1; b = "1"; print(a>b) 会报错,lua不允许number跟string作比较处理
 <br> 逻辑操作符(and or not) a and b 如果a 为true的话就返回b,否则返回a ; a or b 如果a为true就返回a，否则返回b; not a 只返回true or false 
-print(4 and 5);  print(3 or 5);  print(3 > 6 and 1 or 5); 结果分别是 5,3,5 最后的可以当做?: 来理解
-
+print(4 and 5);  print(3 or 5);  print(3 > 6 and 1 or 5); 结果分别是 5,3,5 最后的可以当做?: 来理解（and 的优先级于 or 所以先使用and 再 or操作）
+<br> 字符串连接(..) 要在lua中连接两个字符串,可以使用操作符"..",lua中的字符串是不可修改的,所以使用字符串连接只会创建一个新的字符串 
       
