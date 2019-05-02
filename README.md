@@ -1,7 +1,7 @@
 # LuaNote
 # LuaNote
 <br>  warning: !! 这个文档是基于lua 5.1下的笔记 (具体来说是Lua程序设计中文第二版的书籍相关笔记)
-<br> lua 8种类型: nil, boolean, number, string, function, thread, userdata, table
+<br> ------------------lua 8种类型: nil, boolean, number, string, function, thread, userdata, table
 <br> 可以使用type函数来返回一个值得类型名称
 <br> nil 主要功能是用于区别其他任何值,将nil赋予一个全局变量等同于删除它
 <br> boolean nil 跟false都视为假, 在条件判断(if) 将数字0和空字符串也都视为"真"
@@ -31,11 +31,47 @@
 <br> print(b["v"]) --- print nil 当table某个元素没有初始化，它的内容为nil
 <br> e.g 使用#获得数组的长度 #只能获取从索引"1" 开始到的没有nil的数值的长度,如果table[1] 为nil 那后面的返回的长度都是0
 <br>  a = {};  a[2] = 2; print(#a) -->print 0; a[1] = 2; print(#a) ---> print 2
-<br> ---------- 表达式------------------
+<br> ---------- -----------------表达式------------------
 <br> 关系表达式 使用  ~= 用于不等于测试  == 用于等于测试 ！！注意假如判断的两个值类型不相同会判断不相同 ！！nil只与自身相等
 <br> 对于table跟userdata,Lua是作引用比较,只有它们引用同一个对象的时候,它们才会相等. a = {}; b= {}; a.x = 1; b.x = 1; c = a; print(a==b); print(a == c); 第一个输出是false,第二个输出是true
 <br> a = 1; b = "1"; print(a>b) 会报错,lua不允许number跟string作比较处理
 <br> 逻辑操作符(and or not) a and b 如果a 为true的话就返回b,否则返回a ; a or b 如果a为true就返回a，否则返回b; not a 只返回true or false 
 print(4 and 5);  print(3 or 5);  print(3 > 6 and 1 or 5); 结果分别是 5,3,5 最后的可以当做?: 来理解（and 的优先级于 or 所以先使用and 再 or操作）
 <br> 字符串连接(..) 要在lua中连接两个字符串,可以使用操作符"..",lua中的字符串是不可修改的,所以使用字符串连接只会创建一个新的字符串 
+<br> ----------------------------------- 语句
+<br> 可以多重赋值 a, b , c = 0; print(a, b, c) --> 0, nil, nil
+<br> 局部变量 local 
+<br>local a = 1;
+<br>if(a ~= b) then
+<br>    print(a);  // 1
+<br>    local a = 10; 
+<br>    print(a);  // 10
+<br>else
+<br>    print(b);
+<br>end
+<br> while 判断 do 执行代码 end
+<br> repeat 执行代码 until 判断条件      
+<br> 数字型for for i = 1 , 10, 1 do 执行代码 end; 如果第三个不定义的话默认++1;
+<br> 泛型for |||  迭代table元素 for index, value of pairs({ b = 1, c = 3}) do 执行代码 end ; 数组类型 for index, value in ipairs(1, 2 , 3) do 执行代码 end 注意: 迭代的数组类型的跟其他类型的都可以执行相关的代码,但是ipairs只支持数组类型的table,所以暂时先有限使用pairs的方法吧
+<br> break 结束循环 return 返回一个函数 它们只能是一个块(函数块等)的最后一个语句   
+<br> ----------------------------------- 函数
+<br> 多重返回值函数
+<br>function foo0()  end
+<br>function foo1()  return 'a' end
+<br>function foo2()  return 'a','b' end
+<br>x,y = foo0(); -- x nil y nil
+<br>x,y = foo1(); -- x a y nil
+<br>x,y = foo2(); -- x a y b
+<br>x,y = foo2(), 20; -- x a b 20
+<br>print(x, y); -- a , 20
+<br>print(foo2(), 10); -- a 10
+<br>print(foo2()); -- a, b
+<br> 变长参数   
+<br> function a ( ... )
+<br>     x ,y, z = ...;
+<br>     print(x, y , z);
+<br> end
+<br> a(1, 2); -- 1, 2, nill
+<br> a(1, 2, 3, 4); -- 1 , 2, 3
+<br> a(1, 2, 3); --1, 2, 3
       
