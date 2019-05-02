@@ -48,22 +48,7 @@ print(4 and 5);  print(3 or 5);  print(3 > 6 and 1 or 5); 结果分别是 5,3,5 
 <br>    print(a);  // 10
 <br>else
 <br>    print(b);
-<br>end
-<br> while 判断 do 执行代码 end
-<br> repeat 执行代码 until 判断条件      
-<br> 数字型for for i = 1 , 10, 1 do 执行代码 end; 如果第三个不定义的话默认++1;
-<br> 泛型for |||  迭代table元素 for index, value of pairs({ b = 1, c = 3}) do 执行代码 end ; 数组类型 for index, value in ipairs(1, 2 , 3) do 执行代码 end 注意: 迭代的数组类型的跟其他类型的都可以执行相关的代码,但是ipairs只支持数组类型的table,所以暂时先有限使用pairs的方法吧
-<br> break 结束循环 return 返回一个函数 它们只能是一个块(函数块等)的最后一个语句   
-<br> ----------------------------------- 函数
-<br> 多重返回值函数
-<br>function foo0()  end
-<br>function foo1()  return 'a' end
-<br>function foo2()  return 'a','b' end
-<br>x,y = foo0(); -- x nil y nil
-<br>x,y = foo1(); -- x a y nil
-<br>x,y = foo2(); -- x a y b
-<br>x,y = foo2(), 20; -- x a b 20
-<br>print(x, y); -- a , 20
+<br>endms -- a , 20
 <br>print(foo2(), 10); -- a 10
 <br>print(foo2()); -- a, b
 <br> 变长参数   
@@ -75,3 +60,6 @@ print(4 and 5);  print(3 or 5);  print(3 > 6 and 1 or 5); 结果分别是 5,3,5 
 <br> a(1, 2, 3, 4); -- 1 , 2, 3
 <br> a(1, 2, 3); --1, 2, 3
       
+<br> loadfile loadstring load loadlib
+<br> if not<condition> then error(“errer msg”) ---> 等价于 a = assert(functon(xx), "error msg");如果function没有报错就把结果赋值给n,或者就会引起一个错误并返回error msg
+<br> pcall      
