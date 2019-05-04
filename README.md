@@ -62,4 +62,4 @@ print(4 and 5);  print(3 or 5);  print(3 > 6 and 1 or 5); 结果分别是 5,3,5 
       
 <br> loadfile loadstring load loadlib
 <br> if not<condition> then error(“errer msg”) ---> 等价于 a = assert(functon(xx), "error msg");如果function没有报错就把结果赋值给n,或者就会引起一个错误并返回error msg
-<br> pcall      
+<br> pcall(fn)  pcall 会用一种"保护模式",来调用它的第一个参数，因此PCall可以捕获函数执行中的任何错误，如果没有发生错误,pcall会返回true以及函数的返回值,否则返回false以及错误信息.
