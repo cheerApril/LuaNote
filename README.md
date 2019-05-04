@@ -59,7 +59,11 @@ print(4 and 5);  print(3 or 5);  print(3 > 6 and 1 or 5); 结果分别是 5,3,5 
 <br> a(1, 2); -- 1, 2, nill
 <br> a(1, 2, 3, 4); -- 1 , 2, 3
 <br> a(1, 2, 3); --1, 2, 3
-      
+<br> 判断语句 if condition then 执行代码 elseif codition then 执行代码 end
+<br> for i=0,10, i++ do 执行代码 end
+<br> for key, value in iparis(table = {1, 2, 3}) do 执行代码 end  ipairs方法只适用于打印数组类型的,其他都不会显示出来.
+<br> for key, value in paris(table = { a = 1, 2, 3}) do 执行代码 end
+    
 <br> loadfile loadstring load loadlib
 <br> if not<condition> then error(“errer msg”) ---> 等价于 a = assert(functon(xx), "error msg");如果function没有报错就把结果赋值给n,或者就会引起一个错误并返回error msg
 <br> pcall(fn)  pcall 会用一种"保护模式",来调用它的第一个参数，因此PCall可以捕获函数执行中的任何错误，如果没有发生错误,pcall会返回true以及函数的返回值,否则返回false以及错误信息.
