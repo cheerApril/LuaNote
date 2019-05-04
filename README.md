@@ -124,3 +124,6 @@ print(4 and 5);  print(3 or 5);  print(3 > 6 and 1 or 5); 结果分别是 5,3,5 
 <br>print(a.x);
 <br> 若Lua检测到w中没有某字段,但在其元表却有一个__index字段,那么Lua就会以元表上__index上的字段来查找相关的值
 <br> 2__newindex 元方法与__index类似,不同之处在于前者用于table的更新,而后者用于table的查询.当对一个table中不存在的索引赋值，解析器就会查找__newindex元方法
+<br> 只读table __newindex方法抛出一个错误,__index按照带默认值方法就行了。
+<br> ---模块与包
+<br> require函数 ---查找一个模块的时候会先检查该模块是否已经加载过，没有才重新查找这个模块，返回这个模块，但是没有这个模块的话会报错.
