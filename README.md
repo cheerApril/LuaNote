@@ -60,7 +60,11 @@ print(4 and 5);  print(3 or 5);  print(3 > 6 and 1 or 5); 结果分别是 5,3,5 
 <br> a(1, 2, 3, 4); -- 1 , 2, 3
 <br> a(1, 2, 3); --1, 2, 3
 <br> 判断语句 if condition then 执行代码 elseif codition then 执行代码 end
-<br> for i=0,10, i++ do 执行代码 end
+<br> 
+    
+    
+    
+    i=0,10, i++ do 执行代码 end
 <br> for key, value in iparis(table = {1, 2, 3}) do 执行代码 end  ipairs方法只适用于打印数组类型的,其他都不会显示出来.
 <br> for key, value in paris(table = { a = 1, 2, 3}) do 执行代码 end
     
@@ -77,6 +81,35 @@ print(4 and 5);  print(3 or 5);  print(3 > 6 and 1 or 5); 结果分别是 5,3,5 
 <br> 一个协同程序可以处于4种不同的状态: 挂起(suspended),运行(running),死亡(dead),正常normal 用coroutine.status(co)可以看到一个协同函数的对象
 <br> coroutine.resume 用于启动或再次启动一个协同程序的执行(在协同函数里面可以用关键字 让一个运行中(running)的函数挂起(suspended);
 
-<br> ----使用table 来实现相关的数据结构
+<br> ----使用table 来实现相关的数据结构  table的key是无序的!!!!
 <br>  数组: a = {2,  3 , 4} //记住lua都是从1开始做索引的
 <br>  矩阵: 
+<br> mt = {}; --矩阵
+<br> for i = 1, 5 do
+     for j = 1, 3 do
+        mt[(i-1)* 3 + j] = 0;
+     end
+<br> end
+<br> 队伍跟双向对列 table.insert ; table.delete
+<br>List = {};
+<br>function List.new()
+<br>    return {first = 0, last = -1}
+<br>end
+
+<br>function List.pushFirst(list, value)
+<br>    local first = list.first - 1;
+<br>    list.first = first;
+<br>    list[first] = value
+<br>end
+
+<br>function List.pushLast(list, value)
+<br>    local last = list.last + 1;
+<br>    list.last = last;
+<br>   list[last] = value;
+<br>end
+<br> 集合set的实现方式 if(table[key]) then table end;
+<br> 字符串缓冲,因为lua的字符串是不可更改所有创建字符串会增加内存 table.concat();
+<br> 图
+<br> -------元表
+<br> 可以通过元表来修改一个值得行为,使其在面对一个非预定义的操作是执行一个指定的操作，例如两个table a跟table b 做相加的操作的时候,可以根据他们元表里面的字段__add 做相加操作 ，Lua 在床架耐心的table时候不会创建元表.
+<br> 如果table a 跟 table b 有元表的时候 ， 做 a+b 操作的时候 优先使用table a元表的方法,如果没有__add 的方法的时候查找table b 元表的方法
