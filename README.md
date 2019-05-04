@@ -1,5 +1,4 @@
 # LuaNote
-# LuaNote
 <br>  warning: !! 这个文档是基于lua 5.1下的笔记 (具体来说是Lua程序设计中文第二版的书籍相关笔记)
 <br> ------------------lua 8种类型: nil, boolean, number, string, function, thread, userdata, table
 <br> 可以使用type函数来返回一个值得类型名称
@@ -113,3 +112,15 @@ print(4 and 5);  print(3 or 5);  print(3 > 6 and 1 or 5); 结果分别是 5,3,5 
 <br> -------元表
 <br> 可以通过元表来修改一个值得行为,使其在面对一个非预定义的操作是执行一个指定的操作，例如两个table a跟table b 做相加的操作的时候,可以根据他们元表里面的字段__add 做相加操作 ，Lua 在床架耐心的table时候不会创建元表.
 <br> 如果table a 跟 table b 有元表的时候 ， 做 a+b 操作的时候 优先使用table a元表的方法,如果没有__add 的方法的时候查找table b 元表的方法
+<br> 访问table的元方法
+<br> 1.__index方法:当方法一个table不存在的字段是,得到的结果为nil。实际上,这些访问会促使解析器去查找一个叫__index的元方法.如果没有这个元方法,那么结果如前述的为nil.否则,就由这个元方法来提供最终结果.
+<br> 这个方法可以创建table的时候创建默认值
+<br>a = {};
+<br>mt = {};
+<br>mt.prototype = {x = 10, y =10};
+<br>setmetatable(a, mt);
+<br>mt.__index = mt.prototype;
+
+<br>print(a.x);
+<br> 若Lua检测到w中没有某字段,但在其元表却有一个__index字段,那么Lua就会以元表上__index上的字段来查找相关的值
+<br> 2__newindex 元方法与__index类似,不同之处在于前者用于table的更新,而后者用于table的查询.当对一个table中不存在的索引赋值，解析器就会查找__newindex元方法
