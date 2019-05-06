@@ -178,7 +178,20 @@ print(4 and 5);  print(3 or 5);  print(3 > 6 and 1 or 5); 结果分别是 5,3,5 
 <br>end
 <br>c = newAccount(1);
 <br>print(c.getBalance());
-
+<br> lua的数字库 Math https://blog.csdn.net/w18767104183/article/details/21171443
+<br> lua的table库 table库是由一些赋值函数构成的,这些函数将table作为数组来做
+<br> table.insert(list, pos, value);
+<br> table.insert(list, value);
+<br> table.remove(list); --不指定位置就会删除数组的最后一个元素
+<br> table.remove(list, pos);
+<br> table.sort(list); --不传入判断大少的函数默认少于判断
+<br> table.sort(list, function () end);
+<br> table.concat(list);
+<br> table.concat(list, sep);
+<br> table.concat(list, sep, i);
+<br> table.concat(list, sep, i, j);
+<br> string库 https://blog.csdn.net/nmn0317/article/details/4933207
+<br> 操作系统库: os.time()//返回时间戳 os.date()//获取当前时间日期跟时间
 <br>Lua 采用了自动内存管理。 这意味着你不用操心新创建的对象需要的内存如何分配出来， 也不用考虑在对象不再被使用后怎样释放它们所占用的内存。 Lua 运行了一个 垃圾收集器 来收集所有 死对象 （即在 Lua 中不可能再访问到的对象）来完成自动内存管理的工作。 Lua 中所有用到的内存，如：字符串、表、用户数据、函数、线程、 内部结构等，都服从自动管理。
 
 Lua 实现了一个增量标记-扫描收集器。 它使用这两个数字来控制垃圾收集循环： 垃圾收集器间歇率 和 垃圾收集器步进倍率。 这两个数字都使用百分数为单位 （例如：值 100 在内部表示 1 ）。
@@ -223,7 +236,10 @@ Lua 实现了一个增量标记-扫描收集器。 它使用这两个数字来�
 <br> --面向对象 创建类 只读table
 <br> ---userdata 
 <br> ----弱table
-<br> ----lua 跟C++的交互
+<br> ----lua 跟C/C++的交互
+<br> Lua解析器,即可执行程序"lua".这个解析器是一个简单的应用程序,它依靠Lua库来实现主要功能，这个程序会处理与用户的交互,它会将用户的文件或字符串输入Lua库,由Lua库来完成主要的工作 ---C代码--应用程序代码
+<br> 一个使用了Lua的程序可以在Lua环境中注册C语言（或其他语言）实现的新函数,由此就可以向Lua添加某些无法直接用Lua编写的功能.这便使Lua称为一种'可扩展语言: ---C代码称为"库代码"
+<br> Lua解析等类似的吧Lua当做一个库来使用,这种形式中的C代码称为"应用程序代码",第二种形式,Lua拥有控制权,C语言成为一个"库代码". 应用程序代码跟库代码都使用同样的API来与Lua通信,这些API称为CAPI.
 <br> ----环境
 <br> 环境: Lua将其所有的全局变量保存在一个常规的table中,这个table称为"环境",为了便于实施这种便利的操作,Lua将环境table自身保存在一个全局变量_G中，
 eg: for n in pairs(_G) do print(n) end --可以打印当前环境所有的全局变量.
