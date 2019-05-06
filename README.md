@@ -268,4 +268,20 @@ eg: for n in pairs(_G) do print(n) end --可以打印当前环境所有的全局
 <br>        end
 <br>    end
 <br>})
+
+<br>--lua 5允许每个函数拥有一个自己的环境来查找全局变量,可以通过函数setfenv来改变一个函数的环境,该函数的参数是一个函数和一个新的环境table,第一个参数除了指定为函数本身以外,还可以指定一个数字,以表示当期当前函数调用栈中的层数,数字1表示当前函数
+<br>function test()
+<br>    a = 1;
+<br>    local mt = {};
+<br>setmetatable(mt, {__index = _G});
+<br>    setfenv(1, mt); -- 1 表示当前函数,数字2表示调用函数当前函数的函数,依次类推.
+
+<br>    print(a); -- 1;
+<br>    a = 10;
+<br>    print(a);
+<br>    print(_G.a);
+<br>    _G.a = 20;
+<br>   print(_G.a);
+<br>end
+
 <br> ---内存管理
