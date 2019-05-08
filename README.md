@@ -79,7 +79,12 @@ print(4 and 5);  print(3 or 5);  print(3 > 6 and 1 or 5); 结果分别是 5,3,5 
 <br> end);
 <br> 一个协同程序可以处于4种不同的状态: 挂起(suspended),运行(running),死亡(dead),正常normal 用coroutine.status(co)可以看到一个协同函数的对象
 <br> coroutine.resume 用于启动或再次启动一个协同程序的执行(在协同函数里面可以用关键字 让一个运行中(running)的函数挂起(suspended);
-
+<br> -------
+<br> local co = coroutine.create(function (a, b, c)
+<br>	print(1);
+<br>	coroutine.yield(1);
+<br> end)
+<br>print(coroutine.resume(co, 1, 2, 3)); --- 1
 <br> ----使用table 来实现相关的数据结构  table的key是无序的!!!!
 <br>  数组: a = {2,  3 , 4} //记住lua都是从1开始做索引的
 <br>  矩阵: 
