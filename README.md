@@ -59,11 +59,7 @@ print(4 and 5);  print(3 or 5);  print(3 > 6 and 1 or 5); 结果分别是 5,3,5 
 <br> a(1, 2, 3, 4); -- 1 , 2, 3
 <br> a(1, 2, 3); --1, 2, 3
 <br> 判断语句 if condition then 执行代码 elseif codition then 执行代码 end
-<br> 
-    
-    
-    
-    i=0,10, i++ do 执行代码 end
+<br>  for i=0,10, i++ do 执行代码 end
 <br> for key, value in iparis(table = {1, 2, 3}) do 执行代码 end  ipairs方法只适用于打印数组类型的,其他都不会显示出来.
 <br> for key, value in paris(table = { a = 1, 2, 3}) do 执行代码 end
     
