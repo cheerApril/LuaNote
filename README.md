@@ -128,6 +128,20 @@ print(4 and 5);  print(3 or 5);  print(3 > 6 and 1 or 5); 结果分别是 5,3,5 
 <br> 只读table __newindex方法抛出一个错误,__index按照带默认值方法就行了。
 <br> ---模块与包
 <br> require函数 ---查找一个模块的时候会先检查该模块是否已经加载过，没有才重新查找这个模块，返回这个模块，但是没有这个模块的话会报错.
+<br> function require(name)
+<br>    if not package.loaded[name] then --模块是否已经加载过
+<br>        local loader = findloader(name);
+<br>        if loader == nil then
+<br>            error("unable to load module "..name)
+<br>        end
+<br>        package.loaded[name] = true   -- 将该name的模块标记为已加载(这个设置可能影响到function findloader)
+<br>        local res = loader(name)      -- 初始化模块
+<br>        if res ~= nil then
+<br>            package.loaded[name] = res
+<br>        end
+<br>    end
+<br>   return package.loaded[name]
+<br> end
 
 <br> lua的面向对象---------------------
 <br> self 定义了这项操作的"接受者";
