@@ -142,7 +142,7 @@ print(4 and 5);  print(3 or 5);  print(3 > 6 and 1 or 5); 结果分别是 5,3,5 
 <br>    end
 <br>   return package.loaded[name]
 <br> end
-
+<br> 如果你想强制加载相同库两次,可以使用package.loaded[name]
 <br> lua的面向对象---------------------
 <br> self 定义了这项操作的"接受者";
 <br> 使用self参数是所有面向对象语言的一个核心,大多数面向对象语言都能对程序员隐藏部分self参数,Lua只需使用冒号,就能隐藏该参数,
