@@ -1,3 +1,6 @@
+1. https://blog.csdn.net/qq_35190492
+2. V2ex
+
 # LuaNote
 <br>  warning: !! 这个文档是基于lua 5.1下的笔记 (具体来说是Lua程序设计中文第二版的书籍相关笔记)
 <br> ------------------lua 8种类型: nil, boolean, number, string, function, thread, userdata, table
